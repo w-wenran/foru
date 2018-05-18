@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>shoot</title>
+    <script src="./d3.v3.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <style>
+
+        html,body{height:100%;padding:0;margin:0}
+
+        html,body,.container{width:100%;height:100%}
+
+        .container{overflow:hidden;border-radius:2px}
+
+        body{background:#fafafa;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#333;}
+
+        .container.dark .element text{fill:yellow}
+
+        .container.dark .color-theme{background:white}
+
+        .container.dark .modal{color:whitesmoke}
+
+        .container.dark .modal .hotkey{color:whitesmoke}
+
+        .container.dark .main{background:#333}
+
+        .container.dark .main .bg-circle{fill:whitesmoke}
+
+        .container.dark text{fill:yellow}
+
+
+
+        #code {
+            color:#fafafa;
+            font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";
+            font-size:12px;
+            margin: 10px;
+            position: absolute;
+        }
+        #code .string{color:#2a36ff}
+        #code .keyword{color:#7f0055;font-weight:bold}
+        #code .placeholder{margin-left:15px}
+        #code .space{margin-left:7px}
+        #code .comments{color:#629755}
+        #code .page{display: none}
+
+
+    </style>
+
+    <script type="application/javascript">
+
+        var Shooter = function () {
+            console.log("构造函数");
+            var scope = this;
+
+            d3.xml('./explosion.svg',function(xml){
+                scope.explosion = xml.documentElement;
+                scope.initCanvas();
+                scope.initDimensions();
+                //scope.initBackground();
+                scope.showData();
+            });
+
+            scope.initCanvas = function () {
+                scope.canvas = d3.select('.container')
+                        .append('svg')
+                        .classed('main',true)
+                        .attr('width', '100%')
+                        .attr('height', '100%');
+
+                scope.background = scope.canvas
+                        .append('g')
+                        .classed('background', true);
+
+                scope.game = scope.canvas
+                        .append('g')
+                        .classed('game', true);
+            };
+
+            scope.initDimensions = function () {
+                var clientRect = scope.canvas
+                        .node().getBoundingClientRect();
+
+                scope.width = clientRect.width;
+                scope.height = clientRect.height;
+            };
+
+            scope.initBackground = function(){
+                setInterval(function(){
+
+                    var x = Math.floor(Math.random() * scope.width);
+
+                    scope.background.append('circle')
+                            .classed('bg-circle',true)
+                            .attr('r',1)
+                            .attr('cx',x)
+                            .attr('cy',0)
+                            .transition()
+                            .duration(20000)
+                            .ease('linear')
+                            .attr('cx',x)
+                            .attr('cy',scope.height).remove();
+
+
+                },500);
+            };
+
+            scope.showData = function(){
+                setInterval(function(){
+
+                    var x = Math.floor(Math.random() * scope.width);
+                    var y = Math.floor(Math.random() * scope.height);
+                    //var r = Math.floor(Math.random() * 5);
+                    var r = 1;
+                    scope.game.append('circle')
+                            .classed('bg-circle',true)
+                            .attr('r',r)
+                            .attr('cx',x)
+                            .attr('cy',0)
+                            .attr('opacity',0.2)
+                            .transition()
+                            .duration(20000)
+                            .ease('linear')
+                            .attr('opacity',1)
+                            .attr('cy',scope.height).remove();
+
+
+                },500);
+            }
+
+        };
+
+        new Shooter();
+
+        (function($) {
+            $.fn.typewriter = function(domwriter,index,finishCallBack) {
+                this.each(function() {
+                    var $ele = $(this), str = $ele.html(), progress = 0;
+                    domwriter.html('');
+                    var timer = setInterval(function() {
+                        var current = str.substr(progress, 1);
+                        if (current == '<') {
+                            progress = str.indexOf('>', progress) + 1;
+                        } else {
+                            progress++;
+                        }
+                        domwriter.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
+                        if (progress >= str.length) {
+                            clearInterval(timer);
+                            if(typeof finishCallBack == 'function'){
+                                finishCallBack(index);
+                            }
+                        }
+                    }, 100);
+                });
+                return this;
+            };
+        })(jQuery);
+
+
+    </script>
+</head>
+<body>
+
+    <div class="container dark">
+        <div id = "template" style="display: none">
+            <div id = "page1" class="page">
+                爱情最神奇的地方<br />
+                不是因为你多好我才和你在一起<br />
+                而是你有这么多缺点<br />
+                我还是喜欢你<br />
+                <br />
+                <br />
+                <br />
+                你知道吗？<br />
+                你真的有很多缺点^_^^_^^_^^_^
+            </div>
+            <div id = "page2" class="page">
+                <span class="comments">/**</span><br />
+                <span class="space"/><span class="comments">*@Description Love Confession.</span><br />
+                <span class="space"/><span class="comments">*@Author Kidding wr.</span><br />
+                <span class="space"/><span class="comments">*@CreateDate 2016—06-14,</span><br />
+                <span class="space"/><span class="comments">*@Copyright Kidding wr All rights reserved ^_^</span><br />
+                <span class="space"/><span class="comments">*/</span><br />
+                Boy name = <span class="keyword">Mr</span> Yao<br />
+                Girl name = <span class="keyword">Mrs</span> Chen<br />
+                <span class="comments">//He likes her. </span><br />
+                The boy love the girl;<br />
+                <span class="comments">// They love each other.</span><br />
+                Maybe the girl also love boy<br />
+                <span class="comments">// AS time goes on.</span><br />
+                The boy can not be separated the girl;<br />
+                <span class="comments">// Both wind and snow all over the sky.</span><br />
+                <span class="comments">// Whether on foot or 296.4 kilometers.</span><br />
+                <span class="keyword">The boy</span> very <span class="keyword">happy</span>;<br />
+                <span class="keyword">The girl</span> is also very <span class="keyword">happy</span>;<br />
+                <span class="placeholder"/><span class="comments">// Whether it is right now</span><br />
+                <span class="placeholder"/><span class="comments">// Still in the distant future.</span><br />
+                <span class="placeholder"/>The boy has but one dream;<br />
+                <span class="comments">// The boy wants the girl could well have been happy.</span><br />
+                <br>
+                <br>
+                I want to say:<br />
+                The darkness is no darkness with thee;<br />
+                Baby, I love you forever;<br />
+            </div>
+        </div>
+        <div id="code">
+
+
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+
+    $("#page1").typewriter($("#code"),1,writeDomCallBack);
+
+    function writeDomCallBack(pindex) {
+        var dom = $("#page"+(++pindex));
+        if(dom){
+            dom.typewriter($("#code"),pindex,writeDomCallBack);
+        }
+    }
+
+
+    /*$("#code").typewriter(function(){
+        console.log("OK");
+    });*/
+
+</script>
+</html>
