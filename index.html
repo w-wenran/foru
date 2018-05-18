@@ -13,7 +13,8 @@
 
         .container{overflow:hidden;border-radius:2px}
 
-        body{background:#fafafa;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#333;}
+        body{background:#fafafa;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#333;
+        background-image: url("./fire/night-trees-stars.jpg");background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;}
 
         .container.dark .element text{fill:yellow}
 
@@ -25,7 +26,7 @@
 
         .container.dark .main{background:#333}
 
-        .container.dark .main .bg-circle{fill:whitesmoke}
+        .container.dark .main .bg-circle{fill:yellow}
 
         .container.dark text{fill:yellow}
 
@@ -48,118 +49,7 @@
 
     </style>
 
-    <script type="application/javascript">
 
-        var Shooter = function () {
-            console.log("构造函数");
-            var scope = this;
-
-            d3.xml('./explosion.svg',function(xml){
-                scope.explosion = xml.documentElement;
-                scope.initCanvas();
-                scope.initDimensions();
-                //scope.initBackground();
-                scope.showData();
-            });
-
-            scope.initCanvas = function () {
-                scope.canvas = d3.select('.container')
-                        .append('svg')
-                        .classed('main',true)
-                        .attr('width', '100%')
-                        .attr('height', '100%');
-
-                scope.background = scope.canvas
-                        .append('g')
-                        .classed('background', true);
-
-                scope.game = scope.canvas
-                        .append('g')
-                        .classed('game', true);
-            };
-
-            scope.initDimensions = function () {
-                var clientRect = scope.canvas
-                        .node().getBoundingClientRect();
-
-                scope.width = clientRect.width;
-                scope.height = clientRect.height;
-            };
-
-            scope.initBackground = function(){
-                setInterval(function(){
-
-                    var x = Math.floor(Math.random() * scope.width);
-
-                    scope.background.append('circle')
-                            .classed('bg-circle',true)
-                            .attr('r',1)
-                            .attr('cx',x)
-                            .attr('cy',0)
-                            .transition()
-                            .duration(20000)
-                            .ease('linear')
-                            .attr('cx',x)
-                            .attr('cy',scope.height).remove();
-
-
-                },500);
-            };
-
-            scope.showData = function(){
-                setInterval(function(){
-
-                    var x = Math.floor(Math.random() * scope.width);
-                    var y = Math.floor(Math.random() * scope.height);
-                    //var r = Math.floor(Math.random() * 5);
-                    var r = 1;
-                    scope.game.append('circle')
-                            .classed('bg-circle',true)
-                            .attr('r',r)
-                            .attr('cx',x)
-                            .attr('cy',0)
-                            .attr('opacity',0.2)
-                            .transition()
-                            .duration(20000)
-                            .ease('linear')
-                            .attr('opacity',1)
-                            .attr('cy',scope.height).remove();
-
-
-                },500);
-            }
-
-        };
-
-        new Shooter();
-
-        (function($) {
-            $.fn.typewriter = function(domwriter,index,finishCallBack) {
-                this.each(function() {
-                    var $ele = $(this), str = $ele.html(), progress = 0;
-                    domwriter.html('');
-                    var timer = setInterval(function() {
-                        var current = str.substr(progress, 1);
-                        if (current == '<') {
-                            progress = str.indexOf('>', progress) + 1;
-                        } else {
-                            progress++;
-                        }
-                        domwriter.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
-                        if (progress >= str.length) {
-                            clearInterval(timer);
-                            if(typeof finishCallBack == 'function'){
-                                finishCallBack(index);
-                            }
-                        }
-                    }, 100);
-                });
-                return this;
-            };
-        })(jQuery);
-
-
-    </script>
 </head>
 <body>
 
@@ -173,9 +63,9 @@
                 <br />
                 <br />
                 你知道吗？<br />
-                你真的有很多缺点^_^^_^^_^^_^
+                你真的有很多缺点^_^ ^_^ ^_^ ^_^
             </div>
-            <div id = "page2" class="page">
+            <div id = "page3" class="page">
                 <span class="comments">/**</span><br />
                 <span class="space"/><span class="comments">*@Description Love Confession.</span><br />
                 <span class="space"/><span class="comments">*@Author Kidding wr.</span><br />
@@ -205,29 +95,126 @@
                 Baby, I love you forever;<br />
             </div>
         </div>
-		<canvas id="mycanvas" style="margin: 0px auto 0px;position: absolute;background: rgba(255,255,155,0);z-index: 1"></canvas>
+		<canvas id="mycanvas" style="margin: 0px auto 0px;position: absolute;"></canvas>
         <div id="code">
 
 
         </div>
     </div>
-<script src="./lib/d3js/d3.min.js"></script>
+<script src="./lib/d3js/d3.v5.min.js"></script>
 <script src="./fire/victor.min.js" charset="utf-8"></script>
 <script src="./fire/firework.min.js" charset="utf-8"></script>
 <script src="./fire/firework-main.min.js" charset="utf-8"></script>
 </body>
+<script type="application/javascript">
+
+    var Shooter = function () {
+        console.log("dada");
+        var scope = this;
+
+        d3.xml('./explosion.svg',function(xml){
+            scope.explosion = xml.documentElement;
+            scope.initCanvas();
+            scope.initDimensions();
+            //scope.initBackground();
+            scope.showData();
+        });
+
+        scope.initCanvas = function () {
+            scope.canvas = d3.select('.container')
+                    .append('svg')
+                    .classed('main',true)
+                    .attr('width', '100%')
+                    .attr('height', '100%');
+
+            scope.background = scope.canvas
+                    .append('g')
+                    .classed('background', true);
+
+            scope.game = scope.canvas
+                    .append('g')
+                    .classed('game', true);
+        };
+
+        scope.initDimensions = function () {
+            var clientRect = scope.canvas
+                    .node().getBoundingClientRect();
+
+            scope.width = clientRect.width;
+            scope.height = clientRect.height;
+        };
+
+        scope.showData = function(){
+            setInterval(function(){
+
+                var x = Math.floor(Math.random() * scope.width);
+                var y = Math.floor(Math.random() * scope.height);
+                //var r = Math.floor(Math.random() * 5);
+                var r = 1;
+                scope.game.append('circle')
+                        .classed('bg-circle',true)
+                        .attr('r',r)
+                        .attr('cx',x)
+                        .attr('cy',0)
+                        .attr('opacity',0.2)
+                        .transition()
+                        .duration(20000)
+                        .ease('linear')
+                        .attr('opacity',1)
+                        .attr('cy',scope.height).remove();
+
+
+            },500);
+        }
+
+    };
+
+    new Shooter();
+
+    console.log("d");
+
+    (function($) {
+        $.fn.typewriter = function(domwriter,index,finishCallBack) {
+            this.each(function() {
+                var $ele = $(this), str = $ele.html(), progress = 0;
+                domwriter.html('');
+                var timer = setInterval(function() {
+                    var current = str.substr(progress, 1);
+                    if (current == '<') {
+                        progress = str.indexOf('>', progress) + 1;
+                    } else {
+                        progress++;
+                    }
+                    domwriter.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
+                    if (progress >= str.length) {
+                        clearInterval(timer);
+                        if(typeof finishCallBack == 'function'){
+                            finishCallBack(index);
+                        }
+                    }
+                }, 100);
+            });
+            return this;
+        };
+    })(jQuery);
+
+
+</script>
 <script type="text/javascript">
 
     $("#page1").typewriter($("#code"),1,writeDomCallBack);
 
     function writeDomCallBack(pindex) {
         var dom = $("#page"+(++pindex));
-        if(dom){
+        console.log(dom);
+        debugger
+        if(dom.length>0){
             dom.typewriter($("#code"),pindex,writeDomCallBack);
+        }else{
+            fireStart();
         }
     }
-
-
+    //fireStart();
     /*$("#code").typewriter(function(){
         console.log("OK");
     });*/
