@@ -206,8 +206,6 @@
 
     function writeDomCallBack(pindex) {
         var dom = $("#page"+(++pindex));
-        console.log(dom);
-        debugger
         if(dom.length>0){
             dom.typewriter($("#code"),pindex,writeDomCallBack);
         }else{
