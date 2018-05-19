@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>foru</title>
+    <link rel="stylesheet" href="./lib/css/font-awesome-4.7.0/css/font-awesome.min.css">
     <script src="./lib/jquery3.0.0/jquery.min.js"></script>
+
     <style>
 
         html,body{height:100%;padding:0;margin:0}
@@ -56,7 +58,7 @@
     <div class="container dark">
         <div id = "template" style="display: none">
             <div id = "page1" class="page">
-                <span class="space"/><span class="comments">Description Love Confession.</span><br />
+                <i class="fa fa-heart fa-5x"></i>Love Confession<br />
                 <span class="space"/><span class="comments">Author Kidding wr.</span><br />
                 <span class="space"/><span class="comments">CreateDate 2018-05-20.</span><br />
                 <span class="space"/><span class="comments">Copyright Kidding wr All rights reserved ^_^</span><br />
@@ -176,7 +178,7 @@
                     } else {
                         progress++;
                     }
-                    domwriter.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
+                    domwriter.html(str.substring(0, progress) + (progress & 1 ? '_<i class=\"fa fa-heart\"></i>' : ''));
                     if (progress >= str.length) {
                         clearInterval(timer);
                         if(typeof finishCallBack == 'function'){
