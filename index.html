@@ -37,7 +37,7 @@
         #code {
             color:#fafafa;
             font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";
-            font-size:12px;
+            font-size:15px;
             margin: 10px;
             position: absolute;
         }
@@ -57,16 +57,9 @@
 
     <div class="container dark">
         <div id = "template" style="display: none">
+
             <div id = "page1" class="page">
-                <i class="fa fa-heart fa-5x"></i>Love Confession<br />
-                <span class="space"/><span class="comments">Author Kidding wr.</span><br />
-                <span class="space"/><span class="comments">CreateDate 2018-05-20.</span><br />
-                <span class="space"/><span class="comments">Copyright Kidding wr All rights reserved ^_^</span><br />
-                Boy's name <span class="keyword">WWR</span><br />
-                Girl's name <span class="keyword">ZQ</span><br />
-                <span class="comments">//He likes her. </span><br />
-                The boy like the girl;<br />
-                <span class="comments">Maybe the girl also like boy</span><br />
+                Love Confession for <span class="keyword">WR</span> & <span class="keyword">ZQ</span><br />
                 Today is <span class="keyword">520</span>, a special day<br />
                 <span class="comments">I don’t know if you have any expectations</span><br />
                 Buy a bunch of <span class="keyword">flowers</span> and mail it to you<br />
@@ -159,7 +152,7 @@
                         .attr('cy',scope.height).remove();
 
 
-            },500);
+            },100);
         }
 
     };
@@ -178,7 +171,7 @@
                     } else {
                         progress++;
                     }
-                    domwriter.html(str.substring(0, progress) + (progress & 1 ? '_<i class=\"fa fa-heart\"></i>' : ''));
+                    domwriter.html(str.substring(0, progress) + (progress & 1 ? ' _' : ''));
                     if (progress >= str.length) {
                         clearInterval(timer);
                         if(typeof finishCallBack == 'function'){
