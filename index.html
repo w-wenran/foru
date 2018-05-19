@@ -62,7 +62,6 @@
 
             <div id = "page1" class="page">
                 <span class="title">Love Confession for <span class="keyword">Zhangqi</span></span><br />
-                <br/>
                 Today is <span class="keyword">520</span>, a special day<br />
                 <span class="comments">I don’t know if you have any expectations</span><br />
                 Buy a bunch of <span class="keyword">flowers</span> and mail it to you<br />
@@ -93,75 +92,12 @@
 
         </div>
     </div>
-<script src="./lib/d3js/d3.v5.min.js"></script>
+<!--<script src="./lib/d3js/d3.v5.min.js"></script>-->
 <script src="./fire/victor.min.js" charset="utf-8"></script>
 <script src="./fire/firework.min.js" charset="utf-8"></script>
 <script src="./fire/firework-main.min.js" charset="utf-8"></script>
 </body>
 <script type="application/javascript">
-
-    var Shooter = function () {
-        console.log("dada");
-        var scope = this;
-
-        d3.xml('./explosion.svg',function(xml){
-            scope.explosion = xml.documentElement;
-            scope.initCanvas();
-            scope.initDimensions();
-            //scope.initBackground();
-            scope.showData();
-        });
-
-        scope.initCanvas = function () {
-            scope.canvas = d3.select('.container')
-                    .append('svg')
-                    .classed('main',true)
-                    .attr('width', '100%')
-                    .attr('height', '100%');
-
-            scope.background = scope.canvas
-                    .append('g')
-                    .classed('background', true);
-
-            scope.game = scope.canvas
-                    .append('g')
-                    .classed('game', true);
-        };
-
-        scope.initDimensions = function () {
-            var clientRect = scope.canvas
-                    .node().getBoundingClientRect();
-
-            scope.width = clientRect.width;
-            scope.height = clientRect.height;
-        };
-
-        scope.showData = function(){
-            setInterval(function(){
-
-                var x = Math.floor(Math.random() * scope.width);
-                var y = Math.floor(Math.random() * scope.height);
-                //var r = Math.floor(Math.random() * 5);
-                var r = 1;
-                scope.game.append('circle')
-                        .classed('bg-circle',true)
-                        .attr('r',r)
-                        .attr('cx',x)
-                        .attr('cy',0)
-                        .attr('opacity',0.2)
-                        .transition()
-                        .duration(20000)
-                        .ease('linear')
-                        .attr('opacity',1)
-                        .attr('cy',scope.height).remove();
-
-
-            },100);
-        }
-
-    };
-
-    new Shooter();
 
     (function($) {
         $.fn.typewriter = function(domwriter,index,finishCallBack) {
@@ -202,11 +138,5 @@
             fireStart();
         }
     }
-    //fireStart();
-    //fireStart();
-    /*$("#code").typewriter(function(){
-        console.log("OK");
-    });*/
-
 </script>
 </html>
