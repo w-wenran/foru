@@ -112,7 +112,7 @@
                     if (progress >= str.length) {
                         clearInterval(timer);
                         if(typeof finishCallBack == 'function'){
-                            finishCallBack(lost);
+                            finishCallBack(index);
                         }
                     }
                 }, 75);
