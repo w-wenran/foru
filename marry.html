@@ -16,14 +16,14 @@
                 id:"video1", // used to work with the component later
                 container:"video_div",
                 autoplay:true,
-                src:["./resources/marry.mp4"]
+                src:["http://112.124.31.147/foru/resources/marry.mp4"]
             });
         }
     </script>
 
 </head>
-    <body>
-    <iframe src="http://112.124.31.147/foru/marry.html"></iframe>
-    <!--<div id="video_div" style="width:300px; height:500px;"></div>-->
+    <body onload="loadMV()">
+    <!--<iframe width="-webkit-fill-available" height="-webkit-fill-available" src="http://112.124.31.147/foru/marry.html"></iframe>-->
+    <div id="video_div" style="width:300px; height:500px;"></div>
     </body>
 </html>
