@@ -1,0 +1,20 @@
+1. 安装docker
+cmd: yum install docker
+检查：systemctl status docker
+启动 Docker 服务： sudo systemctl start docker
+
+2. 拉取python镜像
+cmd: docker pull python
+
+3.查看docker的镜像列表是否包含python
+cmd: docker images
+
+4. 启动一个python容器实例
+cmd: docker run -dt -v /opt/data/nginx:/etc/nginx -v /opt/log/nginx:/var/log/nginx -v /opt/share/nginx/html:/usr/share/nginx/html --name nginx -p 80:80 nginx
+
+5.查看是容器实例否启动成功
+docker ps
+
+6.进入容器cmd的交互shell
+docker exec -it 276c15645364 /bin/bash
+
